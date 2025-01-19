@@ -126,21 +126,26 @@
 
         .button {
             display: inline-block;
-            padding: 12px 30px;
-            border-radius: 25px;
+            border: 2px solid #5c5c5c;
+            border-radius: 9999px;
+            padding: 6px 20px;
             text-decoration: none;
-            color: white;
-            background: linear-gradient(45deg, #ADD8E6, #87CEEB);
+            color: #fff;
+            box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(15px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #00000000;
         }
 
         .button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(135, 206, 250, 0.4);
+            scale: 1.05;
+            background-color: #000;
+            color: #fff;
+            box-shadow: 0 0px 10px 0px rgb(121, 192, 197);
+            border-color: rgb(173, 216, 230);
         }
 
         .snowflake {
