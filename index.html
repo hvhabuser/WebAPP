@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>title</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
     <style>
-
         * {
             margin: 0;
             box-sizing: border-box;
@@ -106,6 +106,58 @@
             }
             100% {
                 opacity: 1;
+            }
+        }
+
+        /* Адаптация для мобильных устройств */
+        @media (max-width: 768px) {
+            header {
+                padding: 5% 10%;
+            }
+
+            header h2 {
+                font-size: 12px;
+            }
+
+            .login {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .mainblock {
+                padding: 5%;
+                font-size: 14px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .background-blur {
+                filter: blur(10px) grayscale(50%) brightness(0.5);
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h2 {
+                font-size: 14px;
+            }
+
+            .login {
+                font-size: 12px;
+                padding: 5px 20px;
+            }
+
+            .mainblock {
+                font-size: 12px;
+            }
+
+            .snowflake {
+                font-size: 8px;
             }
         }
     </style>
