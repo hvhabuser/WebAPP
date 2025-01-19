@@ -105,10 +105,10 @@
             opacity: 0;
         }
 
-        .details input:hover, .details input:focus {
+        .details input:focus {
             transform: translateY(-3px);
             box-shadow: 0 0px 10px rgb(173, 216, 230);
-            border-color: #ADD8E6;
+            border: 1px solid rgb(173, 216, 230);
         }
 
         .details button {
@@ -129,7 +129,7 @@
 
         .notification {
             position: fixed;
-            top: 10%;
+            top: 90%;
             left: 50%;
             transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.8);
@@ -342,7 +342,7 @@
             }
         }
 
-        validateApiKey();
+        //validateApiKey();
         fetchBalance();
     </script>
 </body>
