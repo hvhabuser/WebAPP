@@ -189,8 +189,8 @@
 </head>
 <body>
     <header>
-        <div>Icon</div>
         <div class="balance">Balance: <span id="balance">No Data</span></div>
+        <button id="logoutButton" class="button">Выход</button>
     </header>
     <div class="examples">
         <h2>Services</h2>
@@ -205,6 +205,15 @@
     <div id="notification" class="notification"></div>
 
     <script>
+        function deleteCookie(name) {
+            document.cookie = `${name}=; path=/; max-age=0; secure`;
+        }
+
+        document.getElementById('logoutButton').addEventListener('click', () => {
+            deleteCookie('apiKey'); 
+            window.location.href = 'index.html'; 
+        });
+
         function toggleDetails() {
             const details = document.getElementById('details');
             details.classList.toggle('expanded');
