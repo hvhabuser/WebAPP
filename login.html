@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            user-select: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-family: "Unbounded";
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-color: #000000;
+        }
+
+        .background-blur {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            height: 100%;
+            background: url('https://i.imgur.com/JIYcZuh.png') center / cover no-repeat;
+            filter: blur(7px) grayscale(30%) brightness(0.7);
+            z-index: -1;
+            animation: background 1s ease-out forwards;
+        }
+
+        .mainblock {
+            display: flex;
+            flex-direction: column;
+            border: 2px solid rgb(255, 255, 255);
+            border-radius: 20px;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 25rem;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            background: rgba(167, 167, 167, 0.596);
+            box-shadow: 0 0px 40px 0px rrgba(0, 0, 0, 0.583);
+            position: relative;
+            z-index: 1;
+            animation: load 2s forwards 0.3s;
+        }
+
+        h2 {
+            margin: 20px 0 30px;
+            color: #525c5d;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .input-container {
+            position: relative;
+            width: 90%;
+            margin-bottom: 20px;
+        }
+
+        .input-container svg {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            fill: #000;
+            transition: transform 0.3s ease;
+        }
+
+        input {
+            padding: 8px 16px;
+            padding-left: 40px; /* Пространство для иконки */
+            width: 100%;
+            border: 2px solid rgba(200, 200, 200, 0.7);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            background: rgba(255, 255, 255, 0.9);
+            color: #424242;
+            text-align: left;
+            line-height: 1.5;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        input::placeholder {
+            color: #aaa;
+            font-style: italic;
+            transition: opacity 0.3s ease;
+        }
+
+        input:focus::placeholder {
+            opacity: 0;
+        }
+
+        .input-container:hover input, .input-container input:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 0px 15px rgb(173, 216, 230);
+            border-color: #ADD8E6;
+        }
+
+        .input-container:hover svg, .input-container input:focus + svg {
+            transform: translateY(-60%);
+        }
+
+        h6 {
+            margin-bottom: 25px;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(45deg, #ADD8E6, #87CEEB);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(135, 206, 250, 0.4);
+        }
+
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            z-index: 9999;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes load {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes background {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            input {
+                font-size: 0.9rem;
+            }
+
+            .button {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+
+            .mainblock {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mainblock {
+                width: 80%;
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            input {
+                font-size: 0.8rem;
+                padding: 10px;
+                padding-left: 35px;
+            }
+
+            .button {
+                font-size: 0.8rem;
+                padding: 8px 15px;
+            }
+        }
+
+        .notification {
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .notification.error {
+            background-color: rgba(255, 0, 0, 0.8);
+        }
+
+        .notification.success {
+            background-color: rgba(0, 128, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-blur"></div>
+    <div class="mainblock">
+        <h2>Log In</h2>
+        <div class="input-container">
+            <input id="apiKeyInput" type="text" placeholder="API Key">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M280-400q-33 0-56.5-23.5T200-480q0-33 23.5-56.5T280-560q33 0 56.5 23.5T360-480q0 33-23.5 56.5T280-400Zm0 160q-100 0-170-70T40-480q0-100 70-170t170-70q67 0 121.5 33t86.5 87h352l120 120-180 180-80-60-80 60-85-60h-47q-32 54-86.5 87T280-240Zm0-80q56 0 98.5-34t56.5-86h125l58 41 82-61 71 55 75-75-40-40H435q-14-52-56.5-86T280-640q-66 0-113 47t-47 113q0 66 47 113t113 47Z"/></svg>
+        </div>
+        <a id="loginButton" class="button" href="#">Log In</a>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        const input = document.getElementById('apiKeyInput');
+        const loginButton = document.getElementById('loginButton');
+        const notification = document.getElementById('notification');
+    
+        function showNotification(message, type = 'success') {
+            notification.textContent = message;
+            notification.className = `notification show ${type}`;
+    
+            setTimeout(() => {
+                notification.className = 'notification';
+            }, 3000);
+        }
+    
+        loginButton.addEventListener('click', async () => {
+            const apiKey = input.value.trim();
+    
+            if (!apiKey) {
+                showNotification('Please enter your API key.', 'error');
+                return;
+            }
+    
+            try {
+                const response = await fetch(`https://razeclubsmm.ru/api/v2?action=balance&key=${apiKey}`);
+    
+                if (!response.ok) {
+                    throw new Error('Failed to validate API key.');
+                }
+    
+                const data = await response.json();
+    
+                if (data.balance !== undefined) {
+                    // Установить куки
+                    document.cookie = `apiKey=${apiKey}; path=/; max-age=${60 * 60 * 24 * 30}; secure`;
+    
+                    showNotification('Login successful! Redirecting...', 'success');
+    
+                    setTimeout(() => {
+                        window.location.href = 'main.html';
+                    }, 3000);
+                } else {
+                    showNotification('Invalid API key. Please try again.', 'error');
+                }
+            } catch (error) {
+                showNotification('An error occurred while validating your API key.', 'error');
+            }
+        });
+    
+        input.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                loginButton.click();
+            }
+        });
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 10000);
+        }
+        setInterval(createSnowflake, 100);
+    </script>
+</body>
+</html>
